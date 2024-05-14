@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistaController;
+use App\Http\Controllers\AlbumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,10 @@ route::get('artistaShow/{id}', [ArtistaController::class, 'show']);
 route::post('artistaStore', [ArtistaController::class, 'store']);
 route::delete('artistaDestroy/{id}', [ArtistaController::class, 'destroy']);
 route::put('artistaUpdate/{id}', [ArtistaController::class, 'update']);
+
+// Album rotas
+route::get('albuns', [AlbumController::class, 'index']);
+route::get('albumShow/{id}', [AlbumController::class, 'show']);
+route::post('albumStore', [AlbumController::class, 'store']);
+route::delete('albumDestroy/{id}', [AlbumController::class, 'destroy']);
+route::put('albumUpdate/{id}', [AlbumController::class, 'update']);
