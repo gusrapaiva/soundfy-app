@@ -34,7 +34,7 @@ class AlbumController extends Controller
         ]);
 
         if($validarDados->fails()){
-            return "Dados inválidos" . $validarDados->error(true) . 500;;
+            return "Dados inválidos" . $validarDados->error(true) . 500;
         }
 
         $dadosCadastrar = Album::create($dados);
