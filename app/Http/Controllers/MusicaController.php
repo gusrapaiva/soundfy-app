@@ -85,6 +85,11 @@ class MusicaController extends Controller
         $musica->id_artista = $musicas['id_artista'];
         $musica->id_album = $musicas['id_album'];
 
+        if($musica->save()){
+            return "Dados alterados com sucesso." . Response()->json([], Response::HTTP_NO_CONTENT);
+        } else {
+            return "Falha ao alterar dados." . Response()->json([], Response::HTTP_NO_CONTENT);
+        }
     }
 
     /**
