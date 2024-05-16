@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\artista;
+use App\Models\album;
+use App\Models\musica;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
@@ -95,9 +97,11 @@ class ArtistaController extends Controller
     public function destroy(string $id)
     {
         $artista = Artista::find($id);
-        
+
         if($artista->delete()){
-            return "Artista deletado com sucesso" . Response()->json([], Response::HTTP_NO_CONTENT);
+            Album::where("id_artista", $id)->delete();
+            Musica::where("id_artista", $id)->delete();
+            return "Artista e suas obras deletados com sucesso" . Response()->json([], Response::HTTP_NO_CONTENT);
         } else {
             return "Falha ao deletar artista" . Response()->json([], Response::HTTP_NO_CONTENT);
         }

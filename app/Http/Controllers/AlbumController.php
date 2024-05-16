@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\album;
+use App\Models\musica;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,6 +101,7 @@ class AlbumController extends Controller
 
         if($album->delete())
         {
+            Musica::where("id_album", $id)->delete();
             return "Album deletado com sucesso." . Response()->json([], Response::HTTP_NO_CONTENT);
         } else {
             return "Falha ao deletar album." . Response()->json([], Response::HTTP_NO_CONTENT);

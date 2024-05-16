@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('tempo');
             $table->unsignedBigInteger('id_artista')->references('id')->on('artistas');
-            $table->unsignedBigInteger('id_album')->references('id')->on('albuns');
+            $table->unsignedBigInteger('id_album')->references('id')->on('albuns')->nullable();
             $table->timestamps();
         });
     }
